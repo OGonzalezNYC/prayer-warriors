@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <title>Say Your Prayers</title>
+</head>
+<body>
+
+
+
+  <div class="container" id="sign-up-or-log-in-container">
+    <h1>Say Your Prayers</h1>
+
+
+    <div id="registration-container">
+      <form id="registration-form">
+        Register As a NEW Prayer Warrior.
+        <br>
+        Name: <input id="new-user-username" type="text"/>
+        <br>
+        <br>
+        Password: <input id="new-user-password" type="text"/>
+        <br>
+        <input id="new-user-submit" type="submit"/>
+      </form>
+    </div>
+    <div id="registration-response"> </div>
+              <br>
+              <br>
+    <div id="login-container">
+      <form id="login-form">
+        Sign in if you are a REGISTERED Prayer Warrior.
+        <br>
+        Name: <input id="login-username" type="text"/>
+        <br>
+        <br>
+        Password: <input id="login-password" type="text"/>
+        <br>
+        <input id="login-submit" type="submit"/>
+      </form>
+    </div>
+  </div>
+
+
+
+
+  <!-- <div id="new-prayer-container">
+    <form id="new-prayer-form">
+      Title:  <input type="text" id="new-prayer-title" />
+      <br><br>
+      Prayer:  <input type="text" id="new-prayer-body"/>
+      <br><br>
+      <input type="submit" id="new-prayer-submit-button"/>
+      </form>
+  </div> -->
+
+  <div >
+
+      <ul id="prayers-container" >
+
+      </ul>
+  </div>
+
+
+
+
+
+
+
+
+  <script src="src/adapters/SignUpOrLogInAdapter.js"></script>
+  <script type="text/javascript" src="src/components/signUpOrLogIn.js"></script>
+  <script src="src/components/app.js"></script>
+  <script src="src/index.js"></script>
+  <script type="text/javascript" src="src/components/prayers.js"></script>
+  <script type="text/javascript" src="src/components/prayer.js"></script>
+  <script src="src/adapters/PrayersAdapter.js"></script>
+
+
+
+
+
+</body>
+</html>
