@@ -21,56 +21,31 @@ class SignUpOrLogIn {
     this.logInSubmitButton.addEventListener("click", this.logIn);
     //************************************************************************
     this.newPrayerSubmitButton.addEventListener("click", this.userAdapter.createNewPrayer);
+    //*************************************************************************
   }
 
   logIn(e) {
     e.preventDefault();
-    //******************************* Conditionally capture the submitted username and verse.
-    //*******************************Iterate through allUsers to find the user whose username and verse match the captured values.
-    //***********************************Set the global variable loggedInUserId = to that user's id.
-    //**********************************  "if (loggedInUserId)" {display, "You are now logged in."}, blank the fields, and populate the prayers-ontainer."
-    // console.log("I'm into logIn");
+    //Still need to populate the prayers-ontainer 15 lines down."
     let username = document.getElementById("login-username").value;
-    // console.log(username);
     let verse = document.getElementById("login-verse").value;
     console.log(username)
     console.log(verse);
-    // console.log(verse + " again")
-    // console.log(username)
 
     if (username && verse) {
-      //let loggedInUser = function() {
-      let loggedInUser = allUsers.find(user => user['username'] === document.getElementById("login-username").value && user['verse'] === document.getElementById("login-verse").value);
-      //console.log(loggedInUser);
-      if (loggedInUser) {
-        document.getElementById('hidden-login-data').innerHTML = `${document.getElementById("login-username").value}`;
-      // let loggedInUserId = loggedInUser['id'];
-      }
-      // console.log(loggedInUser + " is the loggedInuser");
+      loggedInUser = allUsers.find(user => user['username'] === username && user['verse'] === verse);
     }
-    //console.log(loggedInUser);***********
+    console.log(loggedInUser);
 
+    if (loggedInUser) {
+      document.getElementById("login-response").innerHTML = `You are now logged in, ${username}.`;
+      document.getElementById("login-response").innerHTML = `You are now LOGGED IN, ${username}, speaking of which, don't forget our Lord's command to first remove the LOG IN your own eye before attempting to reove the speck from your brother's! LOL`;
+      document.getElementById("login-username").value = "";
+      document.getElementById("login-verse").value = "";
+      //populate the prayers-container
+      new Prayers();
+    }
 
-    //  let loggedInUser = allUsers.find(user => user['username'] === username && user['verse'] === verse);
-    // //   if (loggedInUser) {
-    // //     console.log(loggedInUser + "here")
-    // }
-    // }
-        //loggedInUserId = loggedInUser['id'];
-        //console.log(loggedInUserId);
-      // }
-
-//       const array1 = [5, 12, 8, 130, 44];
-//
-// const found = array1.find(element => element > 10);
-//
-// console.log(found);
-// // expected output: 12
-
-    // }
-    //   .then(response => response.json())
-    //   .then(jsonizedResponse => console.log(jsonizedResponse))
-    // }
   }
 
 

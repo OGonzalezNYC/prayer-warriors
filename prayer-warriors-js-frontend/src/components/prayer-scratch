@@ -8,7 +8,7 @@ class Prayer {
     this.user_id = prayerJSON.user_id;
   }
 
-  renderPrayer() {
+  renderLi() {
     return `<li><div>Title: ${this.title}</div>
                 <div>Prayer: ${this.body}</div>
                 <p id="amens-paragraph-${this.id}">
