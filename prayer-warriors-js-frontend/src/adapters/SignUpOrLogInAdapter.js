@@ -5,7 +5,6 @@ class SignUpOrLogInAdapter {
 
   }
 
-
   createNewUser(e) {
     e.preventDefault()
     console.log("I'm into createNewUser");
@@ -27,11 +26,47 @@ class SignUpOrLogInAdapter {
       .then(function() {
         if (mostRecentlyCreatedUserId) {
         // if (jsonizedResponse) {
-          document.getElementById("registration-response").innerHTML = "You have successfully registered. Welcome to the ranks of our Prayer Warriors."
+          document.getElementById("registration-response").innerHTML = `God bless you, ${username}. And welcome to the ranks of our Prayer Warriors. Please log in below in order to start posting prayers, or to read the prayers of your fellow warriors and support them with amens if you feel so led.`
           document.getElementById("new-user-username").value = "";
           document.getElementById("new-user-verse").value = "";
         }
       })
+    }
+  }
+
+  fetchUsers() {
+    fetch('http://localhost:3000/api/v1/users', {
+      method: "GET",
+      headers: {"Content-Type": "application/json"},
+    })
+    .then(response => response.json())
+    .then(jsonizedResponse => allUsers = jsonizedResponse)
+  }
+
+  logIn(e) {
+    // e.preventDefault()
+    //******************************* Conditionally capture the submitted username and verse.
+    //*******************************Iterate through allUsers to find the user whose username and verse match the captured values.
+    //***********************************Set the global variable loggedInUserId = to that user's id.
+    //**********************************  "if (loggedInUserId)" {display, "You are now logged in."}, blank the fields, and populate the prayers-ontainer."
+    // console.log("I'm into logIn");
+    // let username = document.getElementById("login-username").value
+    // console.log(username);
+    // let verse = document.getElementById("login-verse").value
+    // console.log(verse)
+    // if (username && verse) {
+    //   fetch('http://localhost:3000/api/v1/users', {
+    //     method: "GET",
+    //     headers: {"Content-Type": "application/json"},
+    //   })
+    //   .then(response => response.json())
+    //   .then(jsonizedResponse => console.log(jsonizedResponse))
+    // }
+  }
+
+}
+
+
 
 
         //loggedInUserId = jsonizedResponse['id']; console.log(loggedInUserId) )
@@ -74,8 +109,7 @@ class SignUpOrLogInAdapter {
         //render(json)
 
       // .then( jsonizedResponse)
-    }
-  }
+
 
 
   // submitNewUserInfo(e) {
@@ -134,23 +168,28 @@ class SignUpOrLogInAdapter {
   //           }).then(response => response.json()).then( response => console.log(response)) ;
   //         });
 
-  logIn(e) {
-    e.preventDefault()
-    console.log("I'm into logIn");
-    let username = document.getElementById("login-username").value
-    console.log(username);
-    let verse = document.getElementById("login-verse").value
-    console.log(verse)
-    if (username && verse) {
-      fetch('http://localhost:3000/api/v1/users', {
-        method: "GET",
-        headers: {"Content-Type": "application/json"},
-      })
-      .then(response => response.json())
-      .then(jsonizedResponse => console.log(jsonizedResponse))
-    }
-  }
 
+
+
+
+//   logIn(e) {
+//     e.preventDefault()
+//     console.log("I'm into logIn");
+//     let username = document.getElementById("login-username").value
+//     console.log(username);
+//     let verse = document.getElementById("login-verse").value
+//     console.log(verse)
+//     if (username && verse) {
+//       fetch('http://localhost:3000/api/v1/users', {
+//         method: "GET",
+//         headers: {"Content-Type": "application/json"},
+//       })
+//       .then(response => response.json())
+//       .then(jsonizedResponse => console.log(jsonizedResponse))
+//     }
+//   }
+//
+// }
   // .then(jsonizedResponse => loggedInUserId = jsonizedResponse['id']);
   // if (loggedInUserId) {
   //
@@ -180,5 +219,3 @@ class SignUpOrLogInAdapter {
   //   }
   //       //loggedInUserId = jsonizedResponse['id']; console.log(loggedInUserId) )
   // }
-
-}

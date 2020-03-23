@@ -1,4 +1,12 @@
-// class UserAdapter {
+class UserAdapter {
+  constructor() {
+
+  }
+
+  createNewPrayer() {
+    //POST fetch with loggedInUserId as the value corresponding to the key of 'id'. 
+  }
+}
 //   constructor() {
 //     this.baseUrl = 'http://localhost:3000/api/v1/'
 //     this.bulkOfFetchCall = `, {
