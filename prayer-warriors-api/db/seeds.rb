@@ -8,11 +8,11 @@
 User.destroy_all
 Prayer.destroy_all
 
-dave = User.create(username: 'Dave', password: 'password')
-mary = User.create(username: 'Mary', password: 'password')
-omar = User.create(username: 'Omar', password: 'password')
+dave = User.create(username: 'Dave', verse: 'password')
+mary = User.create(username: 'Mary', verse: 'password')
+omar = User.create(username: 'Omar', verse: 'password')
 
-Prayer.create(title: 'My mom has cancer', body: 'Lord, please heal her.', user: omar)
-Prayer.create(title: "I am going to propose to my gf.", body: 'God, please make her my wife.', user: omar)
+Prayer.create(title: 'My mom has cancer', body: 'Lord, please heal her.', amens: 1, user: omar)
+Prayer.create(title: "I am going to propose to my girlfriend.", body: 'God, please make her my wife.', outcome: 'She said yes!', user: omar)
 Prayer.create(title: 'Election 2020', body: 'I sure would appreciate a shake-up of some sort.', user: mary)
 Prayer.create(title: 'Graduation', body: 'Father God, please help me to achieve it.', user: dave)

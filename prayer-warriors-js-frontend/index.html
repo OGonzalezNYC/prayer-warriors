@@ -25,7 +25,7 @@
         Name: <input id="new-user-username" type="text"/>
         <br>
         <br>
-        Password: <input id="new-user-password" type="text"/>
+        Favorite Bible Verse: <input id="new-user-verse" type="text"/>
         <br>
         <input id="new-user-submit" type="submit"/>
       </form>
@@ -40,29 +40,42 @@
         Name: <input id="login-username" type="text"/>
         <br>
         <br>
-        Password: <input id="login-password" type="text"/>
+        Favorite Bible Verse: <input id="login-verse" type="text"/>
         <br>
         <input id="login-submit" type="submit"/>
       </form>
     </div>
   </div>
+  <div id="login-response"> </div>
 
+<!-- The login response will read, "God bless you, ${user.username}.",
 
+AND the corrsponding user.id will become the new value of the global variable, loggedInUserId.
 
+AND the log-in response will be accompanied by the appearance of the populated prayers-container.
+AND each amen-button will automatically get bound with an eventListener.
 
-  <!-- <div id="new-prayer-container">
+ONCE I ACHIEVE ALL OF THE ABOVE, (even withOUT binding each amen-button with an eventListener, THAT WILL QUALIFY as 1 CREATE (user), and  2 READS (a SHOW of the logged-in user's USERNAME, and an INDEX of all the PRAYERS).
+
+***********************The "new-prayer-submit" button must get bound with an eventListener WHEN the title input field is clicked.*****************************AND this particular eventListener's callback function must be conditioned on the truthiness of the title-input and body-input values.
+
+*************************AND each button with a class of "outcome-submit" will automatically get bound with an eventListener when its outcome-input field is clicked. *****************************AND this particular eventListener's callback must be conditioned on the current outcome being blank or falsey *************************.  If it IS falsey, then the eventlistener's callback function will dictate that the curently blank outcome space and its corresponding button will be replaced by a form whose text field will be automatically bound such that, when clicked, it will bind its corresponding submit button with anEventListener whose callback will depend on truthiness of the value in the text-input field. -->
+  <br>
+  <br>
+  <div id="new-prayer-container">
     <form id="new-prayer-form">
+      If you have logged in, please feel free to post a prayer.
       Title:  <input type="text" id="new-prayer-title" />
       <br><br>
       Prayer:  <input type="text" id="new-prayer-body"/>
       <br><br>
       <input type="submit" id="new-prayer-submit-button"/>
       </form>
-  </div> -->
+  </div>
 
-  <div >
 
-      <ul id="prayers-container" >
+  <div>
+      <ul id="prayers-container">
 
       </ul>
   </div>

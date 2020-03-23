@@ -2,6 +2,8 @@
 
 // const app = new App();
 // console.log("I'm here.")
+let mostRecentlyCreatedUserId = 0
+let allUsers
 let loggedInUserId = 0
 const app = new App();
 

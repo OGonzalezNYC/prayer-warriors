@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:create, :show]
-      resources :prayers, only: [:index, :show, :create, :update]
-    end 
+      resources :users, only: [:index, :show, :create]
+        # get   '/profile', to: 'users#profile'
+      # resources :prayers, only: [:index, :show, :create, :update]
+      resources :prayers, only: [:index, :create, :update]
+    end
   end
 end

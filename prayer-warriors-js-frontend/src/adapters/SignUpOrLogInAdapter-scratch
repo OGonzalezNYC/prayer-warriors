@@ -23,32 +23,29 @@ class SignUpOrLogInAdapter {
         })
       })
       .then(response => response.json())
-      .then(jsonizedResponse => mostRecentlyCreatedUserId = jsonizedResponse['id'])
-      .then(function() {
-        if (mostRecentlyCreatedUserId) {
-        // if (jsonizedResponse) {
-          document.getElementById("registration-response").innerHTML = "You have successfully registered. Welcome to the ranks of our Prayer Warriors."
-          document.getElementById("new-user-username").value = "";
-          document.getElementById("new-user-verse").value = "";
-        }
-      })
 
 
         //loggedInUserId = jsonizedResponse['id']; console.log(loggedInUserId) )
 
+      .then(jsonizedResponse => console.log(jsonizedResponse))
 
-        // if (jsonizedResponse['id']) {
-        //   loggedInUserId = jsonizedResponse['id'];
-        //   console.log(loggedInUserId);
-        // }
-
-      // .then(function() { if (jsonizedResponse) {console.log('surviving')}})
       // .then(function() {
-      //   if (jsonizedResponse) {
-      //     document.getElementById("registration-response").innerHTML = "You have successfully registered. Welcome to the ranks of our Prayer Warriors."
-      //     document.getElementById("new-user-username").value = "";
-      //     document.getElementById("new-user-verse").value = "";
-      //   }
+      //   //THIS FUNCTION GETS THE ARRAY OF ALL USERS, AND SETS ALLUSERS = TO THAT ARRAY.
+      //   fetch('http://localhost:3000/api/v1/users', {
+      //     method: "GET",
+      //     headers: {"Content-Type": "application/json"},
+      //   })
+      //   .then(response => response.json())
+      //   .then(jsonizedResponse => allusers = jsonizedResponse)
+      //   .then(console.log(allusers))
+      // })
+
+
+
+      // .then(function() {
+      //   document.getElementById("registration-response").innerHTML = "You have successfully registered. Welcome to the ranks of our Prayer Warriors."
+      //   document.getElementById("new-user-username").value = "";
+      //   document.getElementById("new-user-verse").value = "";
       // })
 
       // .then(jsonizedResponse => console.log(jsonizedResponse)).then(function() {
@@ -150,15 +147,6 @@ class SignUpOrLogInAdapter {
       .then(jsonizedResponse => console.log(jsonizedResponse))
     }
   }
-
-  // .then(jsonizedResponse => loggedInUserId = jsonizedResponse['id']);
-  // if (loggedInUserId) {
-  //
-  // }
-
-  // document.getElementById("registration-response").innerHTML = "You have successfully registered. Welcome to the ranks of our Prayer Warriors."
-  // document.getElementById("new-user-username").value = "";
-  // document.getElementById("new-user-verse").value = "";
 
 
   //     fetch('http://localhost:3000/api/v1/users/:id, {

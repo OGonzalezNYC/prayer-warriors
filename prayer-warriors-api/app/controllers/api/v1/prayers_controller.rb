@@ -5,23 +5,27 @@ class Api::V1::PrayersController < ApplicationController
     render json: @prayers, status: 200 # you've got a serializer. Maybe you should use it.
   end
 
-  def show
-    @prayer = Prayer.find(params[:id])
-    render json: @prayer, status: 200
-  end
+  # def show
+  #   @prayer = Prayer.find(params[:id])
+  #   render json: @prayer, status: 200
+  # end
 
   def create
     @prayer = Prayer.create(prayer_params)
     render json: @prayer, status: 200
   end
 
+
   def update
     @prayer = Prayer.find(params[:id])
-# 403 is an unauthorized error
-    # return render json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
-    @prayer.update(prayer_params)
-    render json: @prayer, status: 200
+    if @prayer.update(prayer_params)
+      render json: @prayer, status: 200
+    else
+      render json: {error: 'Unable to edit pra.'}, status: 400
+    end
   end
+  # 403 is an unauthorized error
+      # return render json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
 
 
 # -    return json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
