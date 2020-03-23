@@ -1,21 +1,26 @@
 class SignUpOrLogIn {
 
   constructor() {
-   // this.signUpOrLogIns = [];
+    //*****************************************************************************
+   this.userAdapter = new UserAdapter();
    this.adapter = new SignUpOrLogInAdapter();
    this.defineButtons();
    this.addEventListeners();
   }
 
   defineButtons() {
-    this.newUserSubmit = document.getElementById("new-user-submit")
-    this.returningUserSubmit = document.getElementById("login-submit")
+    this.newUserSubmitButton = document.getElementById("new-user-submit")
+    this.logInNameField = document.getElementById("login-username")
+    this.logInSubmitButton = document.getElementById("login-submit")
+    this.newPrayerSubmitButton = document.getElementById("new-prayer-submit-button")
   }
 
   addEventListeners() {
-    this.newUserSubmit.addEventListener("click", this.adapter.createNewUser);
-    //this.newUserSubmit.addEventListener("click", this.adapter.submitNewUserInfo);
-    this.returningUserSubmit.addEventListener("click", this.adapter.logIn);
+    this.newUserSubmitButton.addEventListener("click", this.adapter.createNewUser);
+    this.logInNameField.addEventListener("click", this.adapter.fetchUsers);
+    this.logInSubmitButton.addEventListener("click", this.adapter.logIn);
+    //************************************************************************
+    this.newPrayerSubmitButton.addEventListener("click", this.userAdapter.createNewPrayer;
   }
 
 }
