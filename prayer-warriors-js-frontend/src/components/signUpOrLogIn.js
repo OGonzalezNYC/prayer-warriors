@@ -15,7 +15,7 @@ class SignUpOrLogIn {
   addEventListeners() {
     this.newUserSubmit.addEventListener("click", this.adapter.createNewUser);
     //this.newUserSubmit.addEventListener("click", this.adapter.submitNewUserInfo);
-    this.returningUserSubmit.addEventListener("click", this.adapter.submitReturningUserInfo);
+    this.returningUserSubmit.addEventListener("click", this.adapter.logIn);
   }
 
 }
