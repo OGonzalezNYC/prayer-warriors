@@ -5,6 +5,7 @@
 let mostRecentlyCreatedUserId = 0
 let allUsers
 let loggedInUser
+let allPrayers
 const app = new App();
 
 
