@@ -4,7 +4,7 @@
 // console.log("I'm here.")
 let mostRecentlyCreatedUserId = 0
 let allUsers
-let loggedInUserId = 0
+let loggedInUser
 const app = new App();
 
 

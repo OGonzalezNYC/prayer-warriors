@@ -34,6 +34,8 @@ class SignUpOrLogInAdapter {
     }
   }
 
+
+  //This eventListener callback is implemented when the login-name input fireld gets clicked.
   fetchUsers() {
     fetch('http://localhost:3000/api/v1/users', {
       method: "GET",
@@ -44,27 +46,52 @@ class SignUpOrLogInAdapter {
   }
 
   logIn(e) {
-    // e.preventDefault()
+    e.preventDefault();
     //******************************* Conditionally capture the submitted username and verse.
     //*******************************Iterate through allUsers to find the user whose username and verse match the captured values.
     //***********************************Set the global variable loggedInUserId = to that user's id.
     //**********************************  "if (loggedInUserId)" {display, "You are now logged in."}, blank the fields, and populate the prayers-ontainer."
     // console.log("I'm into logIn");
-    // let username = document.getElementById("login-username").value
+    let username = document.getElementById("login-username").value;
     // console.log(username);
-    // let verse = document.getElementById("login-verse").value
-    // console.log(verse)
-    // if (username && verse) {
-    //   fetch('http://localhost:3000/api/v1/users', {
-    //     method: "GET",
-    //     headers: {"Content-Type": "application/json"},
-    //   })
+    let verse = document.getElementById("login-verse").value;
+    console.log(username)
+    console.log(verse);
+    // console.log(verse + " again")
+    // console.log(username)
+
+    if (username && verse) {
+      //let loggedInUser = function() {
+      let loggedInUser = allUsers.find(user => user['username'] === document.getElementById("login-username").value && user['verse'] === document.getElementById("login-verse").value);
+      console.log(loggedInUser);
+      // let loggedInUserId = loggedInUser['id'];
+
+      // console.log(loggedInUser + " is the loggedInuser");
+    }
+    console.log(loggedInUser);
+    //  let loggedInUser = allUsers.find(user => user['username'] === username && user['verse'] === verse);
+    // //   if (loggedInUser) {
+    // //     console.log(loggedInUser + "here")
+    // }
+    // }
+        //loggedInUserId = loggedInUser['id'];
+        //console.log(loggedInUserId);
+      // }
+
+//       const array1 = [5, 12, 8, 130, 44];
+//
+// const found = array1.find(element => element > 10);
+//
+// console.log(found);
+// // expected output: 12
+
+    // }
     //   .then(response => response.json())
     //   .then(jsonizedResponse => console.log(jsonizedResponse))
     // }
   }
 
-}
+} //this is the CLASS closing bracket.
 
 
 
