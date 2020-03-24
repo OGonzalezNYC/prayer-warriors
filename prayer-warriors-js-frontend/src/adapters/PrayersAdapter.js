@@ -9,40 +9,31 @@ class PrayersAdapter {
     return fetch(this.baseUrl).then(res => res.json());
   }
 
-  increaseAmens(button) {
-    // console.log(button.parentNode)
-    //fetch, based on dataset.id amens +=1
-    //console.log(button.parentNode)
-    // let amensNumberString = button.parentNode.innerHTML;
-    // console.log("The amensNumberString is " + amensNumberString + ".")
-    //let newAmens = parseInt(amensNumberString) + 1
-    // console.log("The newAmens is " + newAmens + ".")
-    // console.log(amensNumber)
-    let id = button.id.split("-")[1]
-    console.log(id)
-    let amensNumberString = parseInt(document.getElementById(`amens-paragraph-${id}`).innerHTML);
-    console.log(amensNumberString)
-    let newAmens = amensNumberString + 1
-    console.log(newAmens);
-    //console.log(id)
-    //console.log(id)
-    // console.log(document.getElementById(`amens-paragraph-${id}`).innerHTML)
-    fetch(this.baseUrl + `/${id}`, {
-      method: `PATCH`,
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({amens: amensNumberString})
-    })
-    .then(response => response.json())
-    //.console.log(json)
-    // console.log(document.getElementById(`amens-paragraph-${this.id}`))
-    .then(json => { document.getElementById(`amens-paragraph-${id}`).innerHTML = newAmens
-//may need to use .to_string in line 17.
-  })
+//   increaseAmens(button) {
+//     //fetch, based on dataset.id amens +=1
+//     // let amensNumberString = button.parentNode.innerHTML;
+//     //let newAmens = parseInt(amensNumberString) + 1
+// //debugger;
+//     let id = button.id.split("-")[1]
+// //debugger;
+//     let amensNumberString = parseInt(document.getElementById(`amens-paragraph-${id}`).innerHTML);
+// //debugger;
+//     let newAmens = amensNumberString + 1
+// //debugger;
+//     fetch(this.baseUrl + `/${id}`, {
+//       method: `PATCH`,
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Accept": "application/json"
+//       },
+//       body: JSON.stringify({amens: newAmens})
+//     })
+//     .then(response => response.json())
+//     .then(jsonizedResponse => console.log(jsonizedResponse))
+//     //.console.log(json)
+//     // console.log(document.getElementById(`amens-paragraph-${this.id}`))
+//     // .then(json => { document.getElementById(`amens-paragraph-${id}`).innerHTML = newAmens
+// //may need to use .to_string in line 17.
+//   }
 
-}
-
-// }
 }
