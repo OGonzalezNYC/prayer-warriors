@@ -46,35 +46,35 @@ class Prayers {
   }
 
   bindAmenButtons() {
-    //can i add an event listener to every button of a given class?
     let amenButtons = document.getElementsByClassName("add-amen-button");
-    //console.log(amenButtons);
-// var myFunction = function() {
-//     var attribute = this.getAttribute("data-myattribute");
-//     alert(attribute);
-// };
+    Array.from(amenButtons).forEach(button => button.addEventListener('click', function() {
 
-// for (var i = 0; i < elements.length; i++) {
-//     elements[i].addEventListener('click', myFunction, false);
-// }
-// jQuery does the looping part for you, which you need to do in plain JavaScript.
-//
-// If you have ES6 support you can replace your last line with:
-
-    //Will attempt to add a form to each button in renderLi() of prayer.js
-    // console.log(Array.from(amenButtons))
-    Array.from(amenButtons).forEach(button =>
-      //console.log(button.parentNode)
-
-      button.addEventListener('click', this.adapter.increaseAmens(button))
-      //this.adapter.increaseAmens)//may need to do increaseAmens(button)
-
-    );
-
+      //increaseAmens(button) {
+        //fetch, based on dataset.id amens +=1
+        // let amensNumberString = button.parentNode.innerHTML;
+        //let newAmens = parseInt(amensNumberString) + 1
+    //debugger;
+        let id = button.id.split("-")[1]
+    //debugger;
+        let amensNumberString = parseInt(document.getElementById(`amens-paragraph-${id}`).innerHTML);
+    //debugger;
+        let newAmens = amensNumberString + 1
+    //debugger;
+        fetch(`http://localhost:3000/api/v1/prayers/${id}`, {
+          method: `PATCH`,
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({amens: newAmens})
+        })
+        .then(response => response.json())
+        .then(jsonizedResponse => console.log(jsonizedResponse))
+        .then(document.getElementById(`amens-paragraph-${id}`).innerHTML = newAmens)
+    //may need to use .to_string in line 17.
+      }
+     //this.adapter.increaseAmens(button))
+   ));
   }
-
     //amensNumber = parseInt(amensNumber) + 1;
-  // }
-
-
 }
