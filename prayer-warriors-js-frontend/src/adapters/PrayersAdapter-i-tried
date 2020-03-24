@@ -2,11 +2,15 @@
 class PrayersAdapter {
   // An instance of PrayersAdapter will make a fetch request to the backend (api/v1/prayers) and jsonify the response.
   constructor() {
-    this.baseUrl = 'http://localhost:3000/api/v1/prayers';
+//    this.baseUrl = 'http://localhost:3000/api/v1/prayers';
   }
 
-  getPrayers() {
-    return fetch(this.baseUrl).then(res => res.json());
+  fetchPrayers() {
+//  return fetch('http://localhost:3000/api/v1/prayers')
+    fetch('http://localhost:3000/api/v1/prayers')
+    .then(response => response.json())
+    .then(jsonizedResponse => allPrayers = jsonizedResponse)
+//    .then(renderPrayers())
   }
 
   increaseAmens(button) {
@@ -40,9 +44,9 @@ class PrayersAdapter {
     // console.log(document.getElementById(`amens-paragraph-${this.id}`))
     .then(json => { document.getElementById(`amens-paragraph-${id}`).innerHTML = newAmens
 //may need to use .to_string in line 17.
-  })
+    })
 
-}
+  }
 
 // }
 }
