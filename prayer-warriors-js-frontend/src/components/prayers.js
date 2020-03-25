@@ -9,11 +9,10 @@ class Prayers {
   fetchAndLoadPrayers() {
     this.adapter
       .getPrayers()
-      .then(prayers => { // the calling of this fetchAndLoadPrayers function, which is triggered by the instantiation of an instance of the Prayers class, as described above, automatically calls the getPrayers function, as defined in the PrayersAdapter class, an instance of which is instantiated as an attribute of the Prayers instance that has been instantiated by in the logIn function of the signUpOrLogIn class, which was instantiated in app.js.
-
-      //Once the prayers reach this point, as evidenced by a console.log(prayers), it's certain that the data from the API is succesfully reaching this point. Now that data must be appended to the DOM, for which a "render", as defined below, will be called in a promise, just a few lines down from here.
-
-      prayers.forEach(prayer => this.prayers.push(new Prayer(prayer))) //"this.prayers" is the array of all prayers, as defined above. Given that we are successfully requesting and receiving a JSONized array of all prayers, we need to iterate through that array in order to render each prayer as an individual prayer. So, rather than simply pushing "prayer" into this.prayers, which starts off empty, we push it in AS A NEW INSTANCE of Prayer, defined in prayer.js.
+      .then(prayers => { // the calling of this fetchAndLoadPrayers function, which is triggered by the instantiation of an instance of the Prayers class, as described above, automatically calls the getPrayers() function, as defined in the PrayersAdapter class, an instance of which is instantiated as an attribute of the Prayers instance that has been instantiated by the logIn() function of the signUpOrLogIn class, which was instantiated in app.js.
+      //console.log(prayers);
+      //Once the prayers data reach this point (as evidenced by a console.log(prayers), the data must be appended to the DOM, for which a "render", as defined below, will be called in a promise, just a few lines down from here.
+      prayers.forEach(prayer => this.prayers.push(new Prayer(prayer))) //"this.prayers" is the array of all prayers, as defined above. Given that a JSONized array of all prayers is being successfully requested and received, it needs to be iterated through in order for each prayer to be rendered as an individual prayer. So, rather than setting the array = to the incoming jsonized prayers data, each individually jsonized prayer is reconstructed as a new instance of the Prayer class, and then individually pushed into this.prayers, which starts off empty.
     })
     .then(() => {
       this.render()
@@ -21,6 +20,18 @@ class Prayers {
     .then(() => {
       this.bindAmenButtons()
     })
+
+    .then(() => {
+      this.hideRedundantAddOutcomeButtons()
+    })
+
+    .then(() => {
+// console.log('Passed bindAmenButtons');
+      this.bindAddOutcomeButtons()
+    })
+    // .then(() => {
+    //   this.bindOutcomeSubmitButtons()
+    // })
   }
 
   render() {// We want to call this method after we get all the prayers.
@@ -46,35 +57,65 @@ class Prayers {
   }
 
   bindAmenButtons() {
-    let amenButtons = document.getElementsByClassName("add-amen-button");
+    let amenButtons = document.getElementsByClassName("amen-button-class");
     Array.from(amenButtons).forEach(button => button.addEventListener('click', function() {
-
-      //increaseAmens(button) {
         //fetch, based on dataset.id amens +=1
         // let amensNumberString = button.parentNode.innerHTML;
-        //let newAmens = parseInt(amensNumberString) + 1
     //debugger;
-        let id = button.id.split("-")[1]
+      let id = button.id.split("-")[2]
     //debugger;
-        let amensNumberString = parseInt(document.getElementById(`amens-paragraph-${id}`).innerHTML);
+      let amensNumberString = parseInt(document.getElementById(`amens-paragraph-${id}`).innerHTML);
     //debugger;
-        let newAmens = amensNumberString + 1
+      let newAmens = amensNumberString + 1
     //debugger;
-        fetch(`http://localhost:3000/api/v1/prayers/${id}`, {
-          method: `PATCH`,
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+      fetch(`http://localhost:3000/api/v1/prayers/${id}`, {
+        method: `PATCH`,
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
           },
           body: JSON.stringify({amens: newAmens})
-        })
+      })
         .then(response => response.json())
         .then(jsonizedResponse => console.log(jsonizedResponse))
         .then(document.getElementById(`amens-paragraph-${id}`).innerHTML = newAmens)
-    //may need to use .to_string in line 17.
-      }
+    }));
      //this.adapter.increaseAmens(button))
-   ));
   }
-    //amensNumber = parseInt(amensNumber) + 1;
+
+
+  hideRedundantAddOutcomeButtons() {
+    let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
+    Array.from(addOutcomeButtons).forEach(button => {
+      let id = button.id.split("-")[3];
+      if (document.getElementById(`outcome-paragraph-${id}`).innerHTML !== "  ") {
+        button.hidden = true;
+      }
+    })
+  }
+
+
+  bindAddOutcomeButtons() {
+//console.log('Into bindAddOutcomeButtons'); //checkmark
+
+    let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
+//console.log(Array.from(addOutcomeButtons));
+//Array.from(addOutcomeButtons).forEach(button => (console.log(button.id)));
+    Array.from(addOutcomeButtons).forEach(button => button.addEventListener('click', function() {
+//console.log('Line 90'); checkmark
+    let id = button.id.split("-")[3];
+//console.log(id); checkmark
+    let thisPrayerUserId = document.getElementById(`user-id-div-${id}`).innerHTML;
+console.log(thisPrayerUserId);
+    let hiddenOutcomeForm = document.getElementById(`outcome-form-${id}`);
+    //== rather than === renders datatype irrelevant.
+    if (loggedInUser['id'] == thisPrayerUserId) {
+    //== rather than === renders datatype irrelevant.
+      hiddenOutcomeForm.removeAttribute('hidden')
+    }
+    }))
+  }
+    // if (document.getElementById(`outcome-paragraph-${id}`).innerHTML === "  ") {
+    //   button.hidden = true;
+    // }
 }
