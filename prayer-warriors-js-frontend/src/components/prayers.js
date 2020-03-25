@@ -53,7 +53,6 @@ class Prayers {
 
     //Datasets are for adding id's dynamically.
     //data-id = prayer.id
-
   }
 
   bindAmenButtons() {
@@ -97,7 +96,6 @@ class Prayers {
 
   bindAddOutcomeButtons() {
 //console.log('Into bindAddOutcomeButtons'); //checkmark
-
     let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
 //console.log(Array.from(addOutcomeButtons));
 //Array.from(addOutcomeButtons).forEach(button => (console.log(button.id)));
@@ -109,13 +107,34 @@ class Prayers {
 console.log(thisPrayerUserId);
     let hiddenOutcomeForm = document.getElementById(`outcome-form-${id}`);
     //== rather than === renders datatype irrelevant.
-    if (loggedInUser['id'] == thisPrayerUserId) {
+      if (loggedInUser['id'] == thisPrayerUserId) {
     //== rather than === renders datatype irrelevant.
-      hiddenOutcomeForm.removeAttribute('hidden')
-    }
+        hiddenOutcomeForm.removeAttribute('hidden');
+        button.hidden = true
+      }
     }))
   }
-    // if (document.getElementById(`outcome-paragraph-${id}`).innerHTML === "  ") {
-    //   button.hidden = true;
-    // }
+
+
+  bindOutcomeSubmitButtons(e) {
+    e.preventDefault()
+    let submitOutcomeButtons = document.getElementByClassName("submit-outcome-button");
+    Array.from(submitOutcomeButtons).forEach(button => button.addEventListener('click', function() {
+      let id = button.id.split("-")[3];
+      let outcomeText = document.getElementById(`outcome-input-field-${id}`).value;
+      fetch(`http://localhost:3000/api/v1/prayers/${id}`, {
+        method: `PATCH`,
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({outcome: outcomeText})
+      })
+      .then(response => response.json())
+      .then(jsonizedResponse => console.log(jsonizedResponse))
+      .then()
+      // populate the prayer's outcome field with outcoomeText
+      //re-hide the outcome form.
+    }))
+  }
 }
