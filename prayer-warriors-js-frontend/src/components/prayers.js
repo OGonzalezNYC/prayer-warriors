@@ -29,9 +29,9 @@ class Prayers {
 // console.log('Passed bindAmenButtons');
       this.bindAddOutcomeButtons()
     })
-    // .then(() => {
-    //   this.bindOutcomeSubmitButtons()
-    // })
+    .then(() => {
+      this.bindOutcomeSubmitButtons()
+    })
   }
 
   render() {// We want to call this method after we get all the prayers.
@@ -116,9 +116,11 @@ console.log(thisPrayerUserId);
   }
 
 
-  bindOutcomeSubmitButtons(e) {
-    e.preventDefault()
-    let submitOutcomeButtons = document.getElementByClassName("submit-outcome-button");
+  bindOutcomeSubmitButtons() {
+    //e.preventDefault()
+//console.log('We are in bindOutcomeSubmitButtons') checkmark
+    let submitOutcomeButtons = document.getElementsByClassName("submit-outcome-button-class");
+//console.log(submitOutcomeButtons); checkmark
     Array.from(submitOutcomeButtons).forEach(button => button.addEventListener('click', function() {
       let id = button.id.split("-")[3];
       let outcomeText = document.getElementById(`outcome-input-field-${id}`).value;
@@ -132,9 +134,11 @@ console.log(thisPrayerUserId);
       })
       .then(response => response.json())
       .then(jsonizedResponse => console.log(jsonizedResponse))
-      .then()
-      // populate the prayer's outcome field with outcoomeText
+      .then(document.getElementById(`outcome-paragraph-${id}`).innerHTML = outcomeText)
+//console.log('I have populated the prayer outcome field with outcoomeText'); checkmark
+      .then(document.getElementById(`outcome-form-${id}`).hidden = true)
       //re-hide the outcome form.
+      //element.hidden = true
     }))
   }
 }
