@@ -90,26 +90,13 @@ class Prayers {
         if (document.getElementById(`outcome-paragraph-${id}`).innerHTML !== "  ") {
           button.hidden = true;
         }
+        // "!=" instead of "!=="
         if (loggedInUser['id'] != thisPrayerUserId) {
           button.hidden = true;
         }
-        // if (loggedInUser['id'] == thisPrayerUserId) {
-        //   button.removeAttribute('hidden');
-        // }
       })
   }
-
-
-  // hideRedundantAddOutcomeButtons() {
-  //   let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
-  //   Array.from(addOutcomeButtons).forEach(button => {
-  //     let id = button.id.split("-")[3];
-  //     if (document.getElementById(`outcome-paragraph-${id}`).innerHTML !== "  ") {
-  //       button.hidden = true;
-  //     }
-  //   })
-  // }
-
+  
 
   bindAddOutcomeButtons() {
 //console.log('Into bindAddOutcomeButtons'); //checkmark
@@ -123,12 +110,7 @@ class Prayers {
     let thisPrayerUserId = document.getElementById(`user-id-div-${id}`).innerHTML;
 console.log(thisPrayerUserId);
     let hiddenOutcomeForm = document.getElementById(`outcome-form-${id}`);
-    //== rather than === renders datatype irrelevant.
-      if (loggedInUser['id'] == thisPrayerUserId) {
-    //== rather than === renders datatype irrelevant.
         hiddenOutcomeForm.removeAttribute('hidden');
-        button.hidden = true
-      }
     }))
   }
 
