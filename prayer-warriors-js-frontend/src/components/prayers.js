@@ -14,7 +14,7 @@ class Prayers {
       prayers.forEach(prayer => this.prayers.push(new Prayer(prayer))) //"this.prayers" is the array of all prayers, as defined above. Given that a JSONized array of all prayers is being successfully requested and received, it needs to be iterated through in order for each prayer to be rendered as an individual prayer. So, rather than setting the array = to the incoming jsonized prayers data, each individually jsonized prayer is reconstructed as a new instance of the Prayer class, and then individually pushed into this.prayers, which starts off empty.
     })
     .then(() => {
-      this.render()
+      this.unhideNewPrayerFormAndRenderPrayers()
     })
     .then(() => {
       this.bindAmenButtons()
@@ -33,11 +33,12 @@ class Prayers {
     })
   }
 
-  render() {// We want to call this method after we get all the prayers.
+  unhideNewPrayerFormAndRenderPrayers() {// We want to call this method after we get all the prayers.
     //const prayersString = this.prayers.map(prayer => `<li>${prayer.title}</li>`).join('')
     //console.log('rendering...')// The fact that this console.log() works, means
     //console.log(prayersString)// The fact that this console.log() is working means that the array of all prayers is reaching this far.
     //console.log(this.prayers[0])
+    document.getElementById("new-prayer-form").removeAttribute('hidden');
     const prayersContainer = document.getElementById("prayers-container");
     //prayersContainer.innerHTML = 'my prayers here' // The fact that 'my prayers here' successfully
     //populates the "prayers-container" div, means it's all working so far.
@@ -96,7 +97,7 @@ class Prayers {
         }
       })
   }
-  
+
 
   bindAddOutcomeButtons() {
 //console.log('Into bindAddOutcomeButtons'); //checkmark
