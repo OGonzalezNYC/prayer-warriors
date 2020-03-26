@@ -21,7 +21,7 @@ class Prayers {
     })
 
     .then(() => {
-      this.hideRedundantAddOutcomeButtons()
+      this.hideRedundantOrUnauthorizedAddOutcomeButtons()
     })
 
     .then(() => {
@@ -82,15 +82,33 @@ class Prayers {
   }
 
 
-  hideRedundantAddOutcomeButtons() {
-    let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
-    Array.from(addOutcomeButtons).forEach(button => {
-      let id = button.id.split("-")[3];
-      if (document.getElementById(`outcome-paragraph-${id}`).innerHTML !== "  ") {
-        button.hidden = true;
-      }
-    })
+  hideRedundantOrUnauthorizedAddOutcomeButtons() {
+      let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
+      Array.from(addOutcomeButtons).forEach(button => {
+        let id = button.id.split("-")[3];
+        let thisPrayerUserId = document.getElementById(`user-id-div-${id}`).innerHTML;
+        if (document.getElementById(`outcome-paragraph-${id}`).innerHTML !== "  ") {
+          button.hidden = true;
+        }
+        if (loggedInUser['id'] != thisPrayerUserId) {
+          button.hidden = true;
+        }
+        // if (loggedInUser['id'] == thisPrayerUserId) {
+        //   button.removeAttribute('hidden');
+        // }
+      })
   }
+
+
+  // hideRedundantAddOutcomeButtons() {
+  //   let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
+  //   Array.from(addOutcomeButtons).forEach(button => {
+  //     let id = button.id.split("-")[3];
+  //     if (document.getElementById(`outcome-paragraph-${id}`).innerHTML !== "  ") {
+  //       button.hidden = true;
+  //     }
+  //   })
+  // }
 
 
   bindAddOutcomeButtons() {
