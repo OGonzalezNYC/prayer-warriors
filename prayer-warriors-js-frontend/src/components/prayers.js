@@ -117,6 +117,7 @@ class Prayers {
 console.log(thisPrayerUserId);
     let hiddenOutcomeForm = document.getElementById(`outcome-form-${id}`);
         hiddenOutcomeForm.removeAttribute('hidden');
+        button.hidden = true;
     }))
   }
 
