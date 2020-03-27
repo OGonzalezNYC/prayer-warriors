@@ -10,17 +10,19 @@ class Prayer {
 
   renderLi() {
 //debugger;
-    return `<li><div class="individual-prayer-container">Title: ${this.title}</div>
+    return `<br>
+            <li><div class="individual-prayer-container">Title: ${this.title}</div>
 
                 <div hidden class="hidden-container" id="user-id-div-${this.id}">${this.user_id}</div>
 
                 <div class="prayer-by-container">Prayer Warrior: ${allUsers.find(user => user['id'] === this.user_id).username}</div>
 
                 <div class="body-container">Prayer: ${this.body}</div>
+                Amens:
                 <p class="amens-paragraph" id="amens-paragraph-${this.id}">
                 ${this.amens}
                 </p>
-                  <button type="button" id="amen-button-${this.id}" class="amen-button-class">Amen</button>
+                  <button type="button" id="amen-button-${this.id}" class="amen-button-class">Amen +</button><br>
                   Outcome:
                 <p class="outcome-container" id="outcome-paragraph-${this.id}"> ${this.outcome}</p>
                   <button type="button" class="add-outcome-button-class" id="add-outcome-button-${this.id}">Add Outcome</button>

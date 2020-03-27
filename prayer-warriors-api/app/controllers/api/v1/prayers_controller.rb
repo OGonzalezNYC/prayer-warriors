@@ -11,9 +11,28 @@ class Api::V1::PrayersController < ApplicationController
   # end
 
   def create
-    @prayer = Prayer.create(prayer_params)
-    render json: @prayer, status: 200
+    @prayer = Prayer.new(prayer_params)
+    if @prayer.save
+      render json: @prayer, status: 200
+    else
+      render json: {error: 'Unable to create prayer.'}, status: 400
+    end
   end
+
+
+  # def create
+  # #Set user object attributes using strong parameters
+  #   @user = User.new(user_params)
+  # #Attempt to save @user
+  #   if @user.save
+  #     render json: @user, status: 200
+  #   else
+  #   #Saving failed, we can inspect @user.errors for more information
+  #     render json: {error: 'Unable to create user.'}, status: 400
+  #   #If using a form library @user.errors will be displayed graphically when rendering the :new action
+  #   end
+  # end
+
 
 
   def update
@@ -21,7 +40,7 @@ class Api::V1::PrayersController < ApplicationController
     if @prayer.update(prayer_params)
       render json: @prayer, status: 200
     else
-      render json: {error: 'Unable to edit pra.'}, status: 400
+      render json: {error: 'Unable to edit prayer.'}, status: 400
     end
   end
   # 403 is an unauthorized error
