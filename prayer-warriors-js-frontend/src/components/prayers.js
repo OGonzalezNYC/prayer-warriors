@@ -13,9 +13,11 @@ class Prayers {
       //Once the prayers data reach this point (as evidenced by a console.log(prayers), the data must be appended to the DOM, for which a "render", as defined below, will be called in a promise, just a few lines down from here.
       prayers.forEach(prayer => this.prayers.push(new Prayer(prayer))) //"this.prayers" is the array of all prayers, as defined above. Given that a JSONized array of all prayers is being successfully requested and received, it needs to be iterated through in order for each prayer to be rendered as an individual prayer. So, rather than setting the array = to the incoming jsonized prayers data, each individually jsonized prayer is reconstructed as a new instance of the Prayer class, and then individually pushed into this.prayers, which starts off empty.
     })
+
     .then(() => {
       this.unhideNewPrayerFormAndRenderPrayers()
     })
+
     .then(() => {
       this.bindAmenButtons()
     })
@@ -31,6 +33,9 @@ class Prayers {
     .then(() => {
       this.bindOutcomeSubmitButtons()
     })
+    // .then(() => {
+    //   this.bindNewPrayerSubmitButton()
+    // })
   }
 
   unhideNewPrayerFormAndRenderPrayers() {// We want to call this method after we get all the prayers.
@@ -141,4 +146,31 @@ console.log(thisPrayerUserId);
       //element.hidden = true
     }))
   }
+
+
+  // bindNewPrayerSubmitButton() {
+  //   // may need to add e as an argument above and preventDefault on this line.
+  //   document.getElementById("new-prayer-container").addEventListener('click', function(e) {
+  //     e.preventDefault()
+  //     let title = document.getElementById("new-prayer-title").value
+  //     let body = document.getElementById("new-prayer-body").value
+  //     //fetch('http://localhost:3000/api/v1/users', {
+  //     fetch('http://localhost:3000/api/v1/prayers', {
+  //       method: "POST",
+  //       headers: {"Content-TYPE": "application/json"},
+  //       body: JSON.stringify({
+  //         title: `${title}`,
+  //         body: `${body}`,
+  //         amens: 0,
+  //         outcome: `${" "}`,
+  //         userId: `${loggedInUser['id']}`
+  //       })
+  //     })
+  //     .then(response => response.json())
+  //     .then(jsonizedResponse => console.log(jsonizedResponse))
+  //     //.then(new Prayers())
+  //   })
+  // }
+
+
 }

@@ -3,8 +3,25 @@ class UserAdapter {
 
   }
 
-  createNewPrayer() {
-    //POST fetch with loggedInUserId as the value corresponding to the key of 'id'. 
+  createNewPrayer(e) {
+    e.preventDefault()
+    let title = document.getElementById("new-prayer-title").value
+    let body = document.getElementById("new-prayer-body").value
+    //fetch('http://localhost:3000/api/v1/users', {
+    fetch('http://localhost:3000/api/v1/prayers', {
+      method: "POST",
+      headers: {"Content-TYPE": "application/json"},
+      body: JSON.stringify({
+        title: `${title}`,
+        body: `${body}`,
+        amens: 0,
+        outcome: `${" "}`,
+        user_id: `${loggedInUser['id']}`
+      })
+    })
+    .then(response => response.json())
+    .then(jsonizedResponse => console.log(jsonizedResponse))
+    //.then(new Prayers())
   }
 }
 //   constructor() {

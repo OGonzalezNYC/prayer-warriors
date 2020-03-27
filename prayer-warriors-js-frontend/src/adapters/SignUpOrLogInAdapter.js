@@ -69,6 +69,15 @@ class SignUpOrLogInAdapter {
       // console.log(loggedInUser + " is the loggedInuser");
     }
     console.log(loggedInUser);
+  }
+
+
+  // createNewPrayer() {
+  //
+  // }
+
+
+}
     //  let loggedInUser = allUsers.find(user => user['username'] === username && user['verse'] === verse);
     // //   if (loggedInUser) {
     // //     console.log(loggedInUser + "here")
@@ -89,9 +98,8 @@ class SignUpOrLogInAdapter {
     //   .then(response => response.json())
     //   .then(jsonizedResponse => console.log(jsonizedResponse))
     // }
-  }
 
-} //this is the CLASS closing bracket.
+ //this is the CLASS closing bracket.
 
 
 
