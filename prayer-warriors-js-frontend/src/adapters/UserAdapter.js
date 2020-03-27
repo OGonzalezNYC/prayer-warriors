@@ -23,7 +23,7 @@ class UserAdapter {
     .then(jsonizedResponse => console.log(jsonizedResponse))
     .then(document.getElementById("new-prayer-title").value = "")
     .then(document.getElementById("new-prayer-body").value = "")
-    //.then(new Prayers())
+    .then(new Prayers())
   }
 }
 //   constructor() {
