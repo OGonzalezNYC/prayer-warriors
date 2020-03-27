@@ -21,6 +21,8 @@ class UserAdapter {
     })
     .then(response => response.json())
     .then(jsonizedResponse => console.log(jsonizedResponse))
+    .then(document.getElementById("new-prayer-title").value = "")
+    .then(document.getElementById("new-prayer-body").value = "")
     //.then(new Prayers())
   }
 }
