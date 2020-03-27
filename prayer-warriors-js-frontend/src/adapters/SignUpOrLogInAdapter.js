@@ -32,6 +32,9 @@ class SignUpOrLogInAdapter {
         }
       })
     }
+    // else {
+    //   document.getElementById("registration-response").innerHTML = "You must enter a username and a verse or password of your choice."
+    // }
   }
 
 
@@ -45,31 +48,21 @@ class SignUpOrLogInAdapter {
     .then(jsonizedResponse => allUsers = jsonizedResponse)
   }
 
-  logIn(e) {
-    e.preventDefault();
-    //******************************* Conditionally capture the submitted username and verse.
-    //*******************************Iterate through allUsers to find the user whose username and verse match the captured values.
-    //***********************************Set the global variable loggedInUserId = to that user's id.
-    //**********************************  "if (loggedInUserId)" {display, "You are now logged in."}, blank the fields, and populate the prayers-ontainer."
-    // console.log("I'm into logIn");
-    let username = document.getElementById("login-username").value;
-    // console.log(username);
-    let verse = document.getElementById("login-verse").value;
-    console.log(username)
-    console.log(verse);
-    // console.log(verse + " again")
-    // console.log(username)
 
-    if (username && verse) {
-      //let loggedInUser = function() {
-      let loggedInUser = allUsers.find(user => user['username'] === document.getElementById("login-username").value && user['verse'] === document.getElementById("login-verse").value);
-      console.log(loggedInUser);
-      // let loggedInUserId = loggedInUser['id'];
+}
 
-      // console.log(loggedInUser + " is the loggedInuser");
-    }
-    console.log(loggedInUser);
-  }
+  // logIn(e) {
+  //   e.preventDefault();
+  //   let username = document.getElementById("login-username").value;
+  //   let verse = document.getElementById("login-verse").value;
+  //   console.log(username)
+  //   console.log(verse);
+  //   if (username && verse) {
+  //     let loggedInUser = allUsers.find(user => user['username'] === document.getElementById("login-username").value && user['verse'] === document.getElementById("login-verse").value);
+  //     console.log(loggedInUser);
+  //   }
+  //   console.log(loggedInUser);
+  // }
 
 
   // createNewPrayer() {
@@ -77,7 +70,6 @@ class SignUpOrLogInAdapter {
   // }
 
 
-}
     //  let loggedInUser = allUsers.find(user => user['username'] === username && user['verse'] === verse);
     // //   if (loggedInUser) {
     // //     console.log(loggedInUser + "here")

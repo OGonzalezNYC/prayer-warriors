@@ -20,7 +20,7 @@
 
     <div id="registration-container">
       <form id="registration-form">
-        Register as a NEW Prayer Warrior with a UNIQUE name and your favorite Bible verse.
+        Register as a NEW Prayer Warrior with a UNIQUE name and a password of your choice, perhaps your favorite Bible verse!
         <br>
         Name: <input id="new-user-username" type="text"/>
         <br>
@@ -40,7 +40,7 @@
         Name: <input id="login-username" type="text"/>
         <br>
         <br>
-        Favorite Bible Verse: <input id="login-verse" type="text"/>
+        Verse: <input id="login-verse" type="text"/>
         <br>
         <input id="login-submit" type="submit"/>
       </form>
@@ -50,6 +50,9 @@
     </div>
   </div>
   <div id="login-response"> </div>
+  <br>
+
+  <button hidden type="button" id="logout-button">Log Out</button>
 
 <!-- The login response will read, "God bless you, ${user.username}.",
 
