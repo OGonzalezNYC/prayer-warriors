@@ -22,19 +22,26 @@ class SignUpOrLogInAdapter {
         })
       })
       .then(response => response.json())
+      //.then(jsonizedResponse => console.log(jsonizedResponse))
       .then(jsonizedResponse => mostRecentlyCreatedUserId = jsonizedResponse['id'])
       .then(function() {
         if (mostRecentlyCreatedUserId) {
-        // if (jsonizedResponse) {
           document.getElementById("registration-response").innerHTML = `God bless you, ${username}. And welcome to the ranks of our Prayer Warriors. Please log in below in order to start posting prayers, or to read the prayers of your fellow warriors and support them with amens if you feel so led.`
           document.getElementById("new-user-username").value = "";
           document.getElementById("new-user-verse").value = "";
         }
       })
+      //.catch(error => {console.log(error)})
     }
-    // else {
-    //   document.getElementById("registration-response").innerHTML = "You must enter a username and a verse or password of your choice."
-    // }
+    if (username && verse) {
+      document.getElementById("registration-response").innerHTML = `You have chosen a username that already belongs to another Prayer Warrior. Please choose a different username.`
+    }
+    if (username && !verse) {
+      document.getElementById("registration-response").innerHTML = `In addition to entering a username, you must enter a password or verse.`
+    }
+    if (!username && verse) {
+      document.getElementById("registration-response").innerHTML = `In addition to a password or verse, you must enter a username.`
+    }
   }
 
 
