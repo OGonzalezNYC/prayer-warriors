@@ -35,9 +35,9 @@ class SignUpOrLogIn {
     if (username && verse) {
       loggedInUser = allUsers.find(user => user['username'] === username && user['verse'] === verse);
     }
-    // else {
-    //   document.getElementById("login-response").innerHTML = `You must submit a valid name and verse.`
-    // }
+    else {
+      document.getElementById("login-response").innerHTML = `You must submit a valid name and password/verse.`
+    }
     console.log(loggedInUser);
 
     if (loggedInUser) {
@@ -68,6 +68,7 @@ class SignUpOrLogIn {
       //populate the prayers-container
       new Prayers();
     }
+    else document.getElementById("login-response").innerHTML = `The combination of username and password/verse that you have entered does not correspond to any of our registered Prayer Warriors.`
   }
 
 

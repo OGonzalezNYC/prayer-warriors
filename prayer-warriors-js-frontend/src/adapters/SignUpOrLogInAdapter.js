@@ -36,12 +36,15 @@ class SignUpOrLogInAdapter {
     if (username && verse) {
       document.getElementById("registration-response").innerHTML = `You have chosen a username that already belongs to another Prayer Warrior. Please choose a different username.`
     }
-    if (username && !verse) {
-      document.getElementById("registration-response").innerHTML = `In addition to entering a username, you must enter a password or verse.`
+    if (!username || !verse) {
+      document.getElementById("registration-response").innerHTML = `You must enter a username and a password.`
     }
-    if (!username && verse) {
-      document.getElementById("registration-response").innerHTML = `In addition to a password or verse, you must enter a username.`
-    }
+    // if (!username && verse) {
+    //   document.getElementById("registration-response").innerHTML = `In addition to a password or verse, you must enter a username.`
+    // }
+    // if (!username && !verse) {
+    //   document.getElementById("registration-response").innerHTML = `You must enter a username and a password.`
+    // }
   }
 
 
