@@ -1,11 +1,11 @@
-// This simply creates a new instance of App, which will only instantiate a new instance of the Prayers class. It's the kick-off file in that it kicks off the rest of the application.
+// This simply creates a new instance of App and declares some global variables.
 
 // const app = new App();
 // console.log("I'm here.")
 let mostRecentlyCreatedUserId = 0
 let allUsers
 let loggedInUser
-let allPrayers
+//let allPrayers
 const app = new App();
 
 
