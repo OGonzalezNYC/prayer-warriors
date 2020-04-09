@@ -27,6 +27,9 @@ class Prayers {
     .then(() => {
       this.bindOutcomeSubmitButtons()
     })
+    .then(() =>{
+      this.bindSortPrayersButton()
+    })
   }
 
   unhideNewPrayerFormAndRenderPrayers() {// Call this method after GETting all the prayers.
@@ -106,6 +109,32 @@ class Prayers {
         .then(document.getElementById(`outcome-form-${id}`).hidden = true)
       }
     }))
+  }
+
+  bindSortPrayersButton() {
+    document.getElementById('sort-button').addEventListener('click', function() {
+      fetch('http://localhost:3000/api/v1/prayers', {
+        method: "GET",
+        headers: {"Content-Type": "application/json"},
+      })
+      .then(response => response.json())
+      .then(jsonizedPrayers => {
+        jsonizedPrayers.sort(function(a, b) {
+          let titleA = a.title.toUpperCase(); // ignore upper and lowercase
+          let titleB = b.title.toUpperCase(); // ignore upper and lowercase
+          if (titleA < titleB) {
+            return -1;
+          }
+          if (titleA > titleB) {
+            return 1;
+          }
+
+          // names must be equal
+          return 0;
+        });
+        console.log(jsonizedPrayers)
+      })
+    })
   }
 
 }
