@@ -77,7 +77,6 @@ class Prayers {
 
   bindAddOutcomeButtons() {
     let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
-//Array.from(addOutcomeButtons).forEach(button => (console.log(button.id)));
     Array.from(addOutcomeButtons).forEach(button => button.addEventListener('click', function() {
     let id = button.id.split("-")[3];
     let thisPrayerUserId = document.getElementById(`user-id-div-${id}`).innerHTML;
@@ -131,8 +130,104 @@ class Prayers {
 
           // names must be equal
           return 0;
-        });
-        console.log(jsonizedPrayers)
+        })
+
+        //console.log(jsonizedPrayers) checkmark
+        //this.prayers = jsonizedPrayers;
+        //console.log(this.prayers);  checkmark
+
+        this.prayers = [];
+        console.log(this.prayers);
+        jsonizedPrayers.forEach(prayer => this.prayers.push(new Prayer(prayer)));
+        console.log(this.prayers);
+        //this.unhideNewPrayerFormAndRenderPrayers();
+        const prayersContainer = document.getElementById("prayers-container");
+        prayersContainer.innerHTML = this.prayers.map(prayer => prayer.renderLi()).join('')
+        //bindAmenButtons();
+        let amenButtons = document.getElementsByClassName("amen-button-class");
+        Array.from(amenButtons).forEach(button => button.addEventListener('click', function() {
+            //fetch, based on dataset.id
+          let id = button.id.split("-")[2]
+          let amensNumberString = parseInt(document.getElementById(`amens-paragraph-${id}`).innerHTML);
+          let newAmens = amensNumberString + 1
+          fetch(`http://localhost:3000/api/v1/prayers/${id}`, {
+            method: `PATCH`,
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+              },
+              body: JSON.stringify({amens: newAmens})
+          })
+            .then(response => response.json())
+            .then(jsonizedResponse => console.log(jsonizedResponse))
+            .then(document.getElementById(`amens-paragraph-${id}`).innerHTML = newAmens)
+        }));
+        //hideRedundantOrUnauthorizedAddOutcomeButtons();
+        let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
+        Array.from(addOutcomeButtons).forEach(button => {
+          let id = button.id.split("-")[3];
+          let thisPrayerUserId = document.getElementById(`user-id-div-${id}`).innerHTML;
+          if (document.getElementById(`outcome-paragraph-${id}`).innerHTML) {
+            button.hidden = true;
+          }
+          // "!=" instead of "!=="
+          if (loggedInUser['id'] != thisPrayerUserId) {
+            button.hidden = true;
+          }
+        })
+        //bindAddOutcomeButtons();
+        //let addOutcomeButtons = document.getElementsByClassName("add-outcome-button-class");
+        Array.from(addOutcomeButtons).forEach(button => button.addEventListener('click', function() {
+        let id = button.id.split("-")[3];
+        let thisPrayerUserId = document.getElementById(`user-id-div-${id}`).innerHTML;
+        //console.log(thisPrayerUserId);
+        let hiddenOutcomeForm = document.getElementById(`outcome-form-${id}`);
+            hiddenOutcomeForm.removeAttribute('hidden');
+            button.hidden = true;
+        }))
+        //bindOutcomeSubmitButtons();
+        let submitOutcomeButtons = document.getElementsByClassName("hidden-outcome-form");
+        Array.from(submitOutcomeButtons).forEach(button => button.addEventListener('submit', function(e) {
+          e.preventDefault();
+          let id = button.id.split("-")[2];
+          let outcomeText = document.getElementById(`outcome-input-field-${id}`).value;
+          if (outcomeText) {
+            fetch(`http://localhost:3000/api/v1/prayers/${id}`, {
+              method: `PATCH`,
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify({outcome: outcomeText})
+            })
+            .then(response => response.json())
+            .then(jsonizedResponse => console.log(jsonizedResponse))
+            .then(document.getElementById(`outcome-paragraph-${id}`).innerHTML = outcomeText)
+            .then(document.getElementById(`outcome-form-${id}`).hidden = true)
+          }
+        }))
+
+
+        // .then(() => {
+        //   this.unhideNewPrayerFormAndRenderPrayers()
+        // })
+        // .then(() => {
+        //   this.bindAmenButtons()
+        // })
+        // .then(() => {
+        //   this.hideRedundantOrUnauthorizedAddOutcomeButtons()
+        // })
+        // .then(() => {
+        //   this.bindAddOutcomeButtons()
+        // })
+        // .then(() => {
+        //   this.bindOutcomeSubmitButtons()
+        // })
+        // .then(() =>{
+        //   this.bindSortPrayersButton()
+        // })
+
+
       })
     })
   }
