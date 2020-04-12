@@ -27,11 +27,15 @@ class Prayer {
                   <button type="button" class="add-outcome-button-class" id="add-outcome-button-${this.id}">Add Outcome</button>
                   <form hidden id="outcome-form-${this.id}" class="hidden-outcome-form">
                   <p>Tell us how God answered your prayer: <input id="outcome-input-field-${this.id}" type="text"/></p>
-                  <button type="button" class="submit-outcome-button-class" id="submit-outcome-button-${this.id}">Submit Outcome</button>
+
+
                   </form>
 
             </li>
             <br>`
+
+            // <button type="button" class="submit-outcome-button-class" id="submit-outcome-button-${this.id}">Submit Outcome</button>
+
             // p.removeAttribute("hidden");
             //p.hidden = true;
             //p.hidden = false;

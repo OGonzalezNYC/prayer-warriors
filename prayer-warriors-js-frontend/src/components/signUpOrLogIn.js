@@ -40,6 +40,7 @@ class SignUpOrLogIn {
     //console.log(loggedInUser);
 
     if (loggedInUser) {
+      document.getElementById("sort-button").hidden = false;
       document.getElementById("login-response").innerHTML = `You are now LOGGED IN, ${username}, speaking of which, don't forget our Lord's command to first remove the LOG IN your own eye before attempting to remove the speck from your brother's! LOL`;
       document.getElementById("login-username").value = "";
       document.getElementById("login-verse").value = "";
