@@ -137,9 +137,9 @@ class Prayers {
         //console.log(this.prayers);  checkmark
 
         this.prayers = [];
-        console.log(this.prayers);
+        //console.log(this.prayers);
         jsonizedPrayers.forEach(prayer => this.prayers.push(new Prayer(prayer)));
-        console.log(this.prayers);
+        //console.log(this.prayers);
         //this.unhideNewPrayerFormAndRenderPrayers();
         const prayersContainer = document.getElementById("prayers-container");
         prayersContainer.innerHTML = this.prayers.map(prayer => prayer.renderLi()).join('')
