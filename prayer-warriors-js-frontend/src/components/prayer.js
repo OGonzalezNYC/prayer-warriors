@@ -10,7 +10,7 @@ class Prayer {
 
   renderLi() {
     return `<br>
-            <li><div class="individual-prayer-container">Title: ${this.title}</div>
+            <li><div class="individual-prayer-container">TITLE: ${this.title}</div>
 
                 <div hidden class="hidden-container" id="user-id-div-${this.id}">${this.user_id}</div>
 
