@@ -28,6 +28,10 @@ ul {
   padding-left: 200px;
 }
 
+button {
+  background-color: red;
+}
+
 /* .delete-prayer-link {
   color: red;
 } */
