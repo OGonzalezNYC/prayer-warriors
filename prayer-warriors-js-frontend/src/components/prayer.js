@@ -17,7 +17,7 @@ class Prayer {
                 <div class="prayer-by-container">Prayer Warrior: ${allUsers.find(user => user['id'] === this.user_id).username}</div>
 
                 <div class="body-container">Prayer: ${this.body}</div>
-                Amens: <div class="amens-paragraph" id="amens-paragraph-${this.id}">
+                <u>Amens</u> <div class="amens-paragraph" id="amens-paragraph-${this.id}">
                 ${this.amens}</div>
                   <button type="button" id="amen-button-${this.id}" class="amen-button-class">Amen +</button><br>
                   Outcome:
