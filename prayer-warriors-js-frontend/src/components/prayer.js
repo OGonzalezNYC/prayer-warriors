@@ -17,13 +17,11 @@ class Prayer {
                 <div class="prayer-by-container">Prayer Warrior: ${allUsers.find(user => user['id'] === this.user_id).username}</div>
 
                 <div class="body-container">Prayer: ${this.body}</div>
-                Amens:
-                <p class="amens-paragraph" id="amens-paragraph-${this.id}">
-                ${this.amens}
-                </p>
+                Amens: <div class="amens-paragraph" id="amens-paragraph-${this.id}">
+                ${this.amens}</div>
                   <button type="button" id="amen-button-${this.id}" class="amen-button-class">Amen +</button><br>
                   Outcome:
-                <p class="outcome-container" id="outcome-paragraph-${this.id}">${this.outcome}</p>
+                <div class="outcome-container" id="outcome-paragraph-${this.id}">${this.outcome}</div>
                   <button type="button" class="add-outcome-button-class" id="add-outcome-button-${this.id}">Add Outcome</button>
                   <form hidden id="outcome-form-${this.id}" class="hidden-outcome-form">
                   <p>Tell us how God answered your prayer: <input id="outcome-input-field-${this.id}" type="text"/></p>
