@@ -20,7 +20,7 @@ class Prayer {
                 <u>Amens</u> <div class="amens-paragraph" id="amens-paragraph-${this.id}">
                 ${this.amens}</div>
                   <button type="button" id="amen-button-${this.id}" class="amen-button-class">Amen +</button><br>
-                  Outcome:
+                  <u>Outcome</u>
                 <div class="outcome-container" id="outcome-paragraph-${this.id}">${this.outcome}</div>
                   <button type="button" class="add-outcome-button-class" id="add-outcome-button-${this.id}">Add Outcome</button>
                   <form hidden id="outcome-form-${this.id}" class="hidden-outcome-form">
