@@ -41,7 +41,7 @@ class SignUpOrLogIn {
 
     if (loggedInUser) {
       // document.getElementById("sort-button").hidden = false;
-      document.getElementById("login-response").innerHTML = `You are now LOGGED IN, ${username}, speaking of which, don't forget our Lord's command to first remove the LOG IN your own eye before attempting to remove the speck from your brother's! LOL`;
+      document.getElementById("login-response").innerHTML = `${username}, you are now LOGGED IN, speaking of which, don't forget our Lord's command to first remove the LOG IN your own eye before attempting to remove the speck from your brother's eye! ;) (Matthew 7:1-5).`;
       document.getElementById("login-username").value = "";
       document.getElementById("login-verse").value = "";
       document.getElementById("login-form").hidden = true;
