@@ -35,7 +35,7 @@ class SignUpOrLogIn {
       loggedInUser = allUsers.find(user => user['username'] === username && user['verse'] === verse);
     }
     else {
-      document.getElementById("login-response").innerHTML = `You must submit a valid name and password/verse.`
+      document.getElementById("login-response").innerHTML = `You must submit a valid username and password/verse.`
     }
     //console.log(loggedInUser);
 
