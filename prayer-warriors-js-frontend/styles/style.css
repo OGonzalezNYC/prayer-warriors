@@ -10,7 +10,8 @@ body {
   line-height: 1.5em;
   /* font-size: 1.6em; */
   font-size: 1.5em;
-  text-align: left;
+  /* text-align: left; */
+  text-align: center;
   padding-left: 201px;
   padding-right: 201px;
   background-color: black;
