@@ -6,7 +6,8 @@ body {
   font-family: Helvetica;
   /* font-weight: 301; */
   font-weight: 300;
-  line-height: 1.6em;
+  /* line-height: 1.6em; */
+  line-height: 1.5em;
   font-size: 1.6em;
   text-align: left;
   padding-left: 201px;
