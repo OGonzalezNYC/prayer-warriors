@@ -19,10 +19,12 @@ body {
 
   text-align: left;
   /* text-align: center; */
-  
-  padding-left: 201px;
+
+  /* padding-left: 201px; */
+  padding-left: 200px;
+
   padding-right: 201px;
-  background-color: black;
+
 }
 
 /* a {
